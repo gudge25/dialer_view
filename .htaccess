@@ -1,0 +1,152 @@
+DirectoryIndex index.php
+RewriteEngine On
+php_flag display_errors off
+php_flag display_startup_errors off
+
+AddDefaultCharset windows-1251
+php_value default_charset "windows-1251"
+
+#AddDefaultCharset UTF-8
+#php_value default_charset "UTF-8"
+
+RewriteCond %{SERVER_PORT} !^443$
+
+RewriteEngine on
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.php -f
+RewriteRule ^(.*)$ $1.php
+
+#RewriteRule .* http://%{SERVER_NAME}%{REQUEST_URI} [R=301,L]
+
+# Главная
+RewriteRule ^index.html$ index.php [L]
+
+# Правила
+RewriteRule ^rules(/?)+$ index.php?menu=rules [L]
+
+# Контакты
+RewriteRule ^contacts(/?)+$ index.php?menu=contacts [L]
+
+# Онлайн
+RewriteRule ^online(/?)+$ index.php?menu=online [L]
+
+# Вопросы
+RewriteRule ^helpy(/?)+$ index.php?menu=helpy [L]
+
+# Вопросы
+RewriteRule ^video(/?)+$ index.php?menu=video [L]
+
+# Новости
+RewriteRule ^news(/?)+$ index.php?menu=news [L]
+
+# Таблицы
+RewriteRule ^table(/?)+$ index.php?menu=table&del=$1 [L,QSA]
+
+
+# О нас
+RewriteRule ^about(/?)+$ index.php?menu=about [L]
+
+
+# Помощь
+RewriteRule ^help(/?)+$ index.php?menu=help [L]
+RewriteRule ^help/id/([0-9]+)(/?)+$ index.php?menu=help&id=$1 [L]
+
+# YandexMoney
+RewriteRule ^account/insertyd(/?)+$ index.php?menu=account&sel=insertyd [L]
+RewriteRule ^account/insertadv(/?)+$ index.php?menu=account&sel=insertadv [L]
+
+
+# Вход
+RewriteRule ^login(/?)+$ index.php?menu=login [L]
+
+# Регистрация
+RewriteRule ^signup/key/(.*)(/?)+$ index.php?menu=signup&key=$1 [L]
+RewriteRule ^signup(/?)+$ index.php?menu=signup [L]
+
+# Восстановление пароля
+RewriteRule ^recovery(/?)+$ index.php?menu=recovery [L]
+
+# Последние выплаты
+RewriteRule ^payments(/?)+$ index.php?menu=payments [L]
+
+# Faq
+RewriteRule ^faq(/?)+$ index.php?menu=faq [L]
+
+
+# Пользователи
+RewriteRule ^users/([0-9]+)(/?)+$ index.php?menu=users&page=$1 [L]
+RewriteRule ^users(/?)+$ index.php?menu=users [L]
+
+# Аккаунт
+RewriteRule ^account/chat(/?)+$ index.php?menu=account&sel=chat [L]
+RewriteRule ^account/chat/noban/([a-zA-Z0-9]+)(/?)+$ index.php?menu=account&sel=chat&noban=$1 [L]
+
+RewriteRule ^invcompetition(/?)+$ index.php?menu=invcompetition [L]
+RewriteRule ^invcompetition/list(/?)+$ index.php?menu=invcompetition&list [L]
+
+RewriteRule ^shop(/?)+$ index.php?menu=shop [L]
+
+
+RewriteRule ^account/bonus(/?)+$ index.php?menu=account&sel=bonus [L]
+RewriteRule ^account/shop(/?)+$ index.php?menu=account&sel=shop [L]
+RewriteRule ^account/config(/?)+$ index.php?menu=account&sel=config [L]
+
+RewriteRule ^account/store(/?)+$ index.php?menu=account&sel=store [L]
+RewriteRule ^account/insert(/?)+$ index.php?menu=account&sel=insert [L]
+RewriteRule ^account/insertadv(/?)+$ index.php?menu=account&sel=insertadv [L]
+RewriteRule ^account/insertqiwi(/?)+$ index.php?menu=account&sel=insertqiwi [L]
+RewriteRule ^account/insertyad(/?)+$ index.php?menu=account&sel=insertyad [L]
+RewriteRule ^account/insertvisa(/?)+$ index.php?menu=account&sel=insertvisa [L]
+RewriteRule ^account/insertf(/?)+$ index.php?menu=account&sel=insertf [L]
+RewriteRule ^account/insertbtc(/?)+$ index.php?menu=account&sel=insertbtc [L]
+RewriteRule ^account/insertdoge(/?)+$ index.php?menu=account&sel=insertdoge [L]
+RewriteRule ^account/pm(/?)+$ index.php?menu=account&sel=pm [L]
+RewriteRule ^account/payment/([0-9]+)(/?)+$ index.php?menu=account&sel=payment&pay_id=$1 [L]
+RewriteRule ^account/payment(/?)+$ index.php?menu=account&sel=payment [L]
+RewriteRule ^account/yandex_payment(/?)+$ index.php?menu=account&sel=yandex_payment [L]
+RewriteRule ^account/adv_payment(/?)+$ index.php?menu=account&sel=adv_payment [L]
+RewriteRule ^account/qiwi_payment(/?)+$ index.php?menu=account&sel=qiwi_payment [L]
+RewriteRule ^account/swap(/?)+$ index.php?menu=account&sel=swap [L]
+RewriteRule ^info(/?)+$ index.php?menu=account&sel=info [L]
+RewriteRule ^account/referals(/?)+$ index.php?menu=account&sel=referals [L]
+
+RewriteRule ^account/exit(/?)+$ index.php?menu=account&sel=exit [L]
+RewriteRule ^account/wm_insert(/?)+$ index.php?menu=account&sel=wm_insert [L]
+RewriteRule ^account(/?)+$ index.php?menu=account [L]
+RewriteRule ^competition(/?)+$ index.php?menu=competition [L]
+RewriteRule ^competition/list(/?)+$ index.php?menu=competition&list [L]
+RewriteRule ^top(/?)+$ index.php?menu=top [L]
+RewriteRule ^top/([0-9]+)(/?)+$ index.php?menu=top&page=$1 [L]
+
+
+#серфинг
+RewriteRule ^serfing(/?)+$ index.php?menu=serfing [L]
+RewriteRule ^account/serfing(/?)+$ index.php?menu=account&sel=serfing [L]
+RewriteRule ^account/serfing/edit/([0-9]+)(/?)+$ index.php?menu=account&sel=serfing_add&advedit=$1 [L]
+RewriteRule ^account/serfing/delete/([0-9]+)(/?)+$ index.php?menu=account&sel=serfing&delete=$1 [L]
+RewriteRule ^account/serfing/add(/?)+$ index.php?menu=account&sel=serfing_add [L]
+RewriteRule ^account/serfing/cabinet(/?)+$ index.php?menu=account&sel=serfing_cabinet [L]
+RewriteRule ^account/serfing/moder(/?)+$ index.php?menu=account&sel=serfing_moder [L]
+RewriteRule ^account/serfing/view/([0-9]+)(/?)+$ _serfing_view.php?view=$1 [L]
+
+#Админские ссылки
+
+RewriteRule ^admin/qiwi_insert(/?)+$ admin/index.php?menu=_qiwi_insert.php [L]
+RewriteRule ^admin/ticket/id/([0-9]+)(/?)+$ admin/index.php?menu=ticket&id=$1 [L]
+RewriteRule ^admin/ticket(/?)+$ admin/index.php?menu=ticket [L]
+RewriteRule ^admin/stats(/?)+$ admin/index.php?menu=stats [L]
+RewriteRule ^admin/config(/?)+$ admin/index.php?menu=config [L]
+RewriteRule ^admin/contacts(/?)+$ admin/index.php?menu=contacts [L]
+RewriteRule ^admin/rules(/?)+$ admin/index.php?menu=rules [L]
+RewriteRule ^admin/about(/?)+$ admin/index.php?menu=about [L]
+RewriteRule ^admin/story_buy(/?)+$ admin/index.php?menu=story_buy [L]
+RewriteRule ^admin/story_swap(/?)+$ admin/index.php?menu=story_swap [L]
+RewriteRule ^admin/story_insert(/?)+$ admin/index.php?menu=story_insert [L]
+RewriteRule ^admin/story_sell(/?)+$ admin/index.php?menu=story_sell [L]
+RewriteRule ^admin/news(/?)+$ admin/index.php?menu=news [L]
+RewriteRule ^admin/users(/?)+$ admin/index.php?menu=users [L]
+RewriteRule ^admin/sender(/?)+$ admin/index.php?menu=sender [L]
+RewriteRule ^admin/payments(/?)+$ admin/index.php?menu=payments [L]
+RewriteRule ^admin/pin(/?)+$ admin/index.php?menu=pin [L]
+RewriteRule ^admin/torg(/?)+$ admin/index.php?menu=torg [L]
+RewriteRule ^admin/exit(/?)+$ admin/index.php?menu=exit [L]
